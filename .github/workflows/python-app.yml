@@ -22,5 +22,7 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             echo connected successfully
+            cd gitfolder65//git-action-demo
+            git pull
           
             
