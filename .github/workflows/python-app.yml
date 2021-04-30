@@ -19,15 +19,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-
+    
     - name: Testing some things
       run: echo "testing....." 
 
-    - name: Deploy python app
+    - name: Connecting to Server
       uses: appleboy/ssh-action@v0.1.2
       with:
         host: ${{secrets.SSH_HOST}}
@@ -35,11 +31,18 @@ jobs:
         password: ${{ secrets.SSH_PASSWORD }}
         script: |
           echo connected successfully
-          cd gitfolder65//git-action-demo
-          git pull
-          source lvenv/bin/activate
-          pip3 install -r requirements.txt
-          pip3 freeze
-          cat temp.txt
-    - name: Testing some things
-      run: pwd
+          
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: deploying to Server
+      run: |
+        cd gitfolder65//git-action-demo
+        git pull
+        source lvenv/bin/activate
+        pip3 install -r requirements.txt
+        pip3 freeze
+        cat temp.txt 
