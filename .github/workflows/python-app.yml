@@ -27,6 +27,6 @@ jobs:
             source lvenv/bin/activate
             pip3 install -r requirements.txt
             pip3 freeze
-      - run: cat temp.txt
+      - run: cat gitfolder65//git-action-demo/temp.txt
             
             
