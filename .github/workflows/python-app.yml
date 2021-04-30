@@ -27,6 +27,6 @@ jobs:
             source lvenv/bin/activate
             pip3 install -r requirements.txt
             pip3 freeze
-      - run: pwd
+      - run: cat temp.txt
             
             
