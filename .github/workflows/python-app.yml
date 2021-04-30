@@ -41,8 +41,6 @@ jobs:
     - name: deploying to Server
       run: |
         pwd
-        ls
-        cd gitfolder65/git-action-demo
         git pull
         source lvenv/bin/activate
         pip3 install -r requirements.txt
