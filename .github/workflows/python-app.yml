@@ -14,9 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered"
-      - run: |
-            python3
-            assert "p"=="t" 
+      - run: echo "helo"
       - name: Deploy python app
         uses: appleboy/ssh-action@v0.1.2
         with:
