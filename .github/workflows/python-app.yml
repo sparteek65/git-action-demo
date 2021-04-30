@@ -14,16 +14,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "🎉 The job was automatically triggered"
-      - name: Deploy python app
+      - name: Testing the breakage
         uses: appleboy/ssh-action@v0.1.2
         with:
           host: ${{secrets.SSH_HOST}}
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           run: |
-            python sparteek65
+            python3
+            assert "p"=="t" 
+      - name: Deploy python app
+        uses: appleboy/ssh-action@v0.1.2
+        with:
+          host: ${{secrets.SSH_HOST}}
+          username: ${{ secrets.SSH_USERNAME }}
+          password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            python sparteek65jjj
             echo connected successfully
             cd gitfolder65//git-action-demo
             git pull
@@ -31,5 +37,4 @@ jobs:
             pip3 install -r requirements.txt
             pip3 freeze
             cat temp.txt
-
             
