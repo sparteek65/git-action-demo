@@ -38,11 +38,13 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
-    - name: deploying to Server
+    - name: Installing requirements
       run: |
         pwd
         git pull
         source lvenv/bin/activate
         pip3 install -r requirements.txt
-        pip3 freeze
+
+    - name: Deploying to server
+      run: |
         cat temp.txt 
