@@ -21,3 +21,8 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
             mkdir gitfolder65
+            cd gitfolder65
+            git clone https://github.com/sparteek65/git-action-demo.git
+            cd git-action-demo
+            ls
+            
