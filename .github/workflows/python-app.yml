@@ -25,7 +25,7 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Testing some things
-    - run: echo "testing....." 
+      run: echo "testing....." 
 
     - name: Deploy python app
       uses: appleboy/ssh-action@v0.1.2
