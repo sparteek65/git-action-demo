@@ -13,6 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - run: echo "🎉 The job was automatically triggered"
       - name: Deploy python app
         uses: appleboy/ssh-action@v0.1.2
         with:
@@ -20,9 +21,8 @@ jobs:
           username: ${{ secrets.SSH_USERNAME }}
           password: ${{ secrets.SSH_PASSWORD }}
           script: |
-            mkdir gitfolder65
-            cd gitfolder65
-            git clone https://github.com/sparteek65/git-action-demo.git
-            cd git-action-demo
-            ls
+            echo connected successfully
+            cd gitfolder65//git-action-demo
+            git pull
+          
             
