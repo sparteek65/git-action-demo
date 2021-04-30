@@ -12,21 +12,39 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+
     steps:
-      - run: echo "🎉 The job was automatically triggered"
-      - run: echo "helo"
-      - name: Deploy python app
-        uses: appleboy/ssh-action@v0.1.2
-        with:
-          host: ${{secrets.SSH_HOST}}
-          username: ${{ secrets.SSH_USERNAME }}
-          password: ${{ secrets.SSH_PASSWORD }}
-          script: |
-            echo connected successfully
-            cd gitfolder65//git-action-demo
-            git pull
-            source lvenv/bin/activate
-            pip3 install -r requirements.txt
-            pip3 freeze
-            cat temp.txt
-            
+    - uses: actions/checkout@v2
+    
+    - name: Testing some things
+      run: echo "testing....." 
+
+    - name: Connecting to Server
+      uses: appleboy/ssh-action@v0.1.2
+      with:
+        host: ${{secrets.SSH_HOST}}
+        username: ${{ secrets.SSH_USERNAME }}
+        password: ${{ secrets.SSH_PASSWORD }}
+        script: |
+          echo connected successfully
+          
+
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+
+    - name: Installing requirements
+      run: |
+        pwd
+        git pull
+        source lvenv/bin/activate
+        pip3 install -r requirements.txt
+
+    - name: Deploying to server
+      run: |
+        cat temp.txt 
