@@ -9,7 +9,6 @@ on:
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -20,7 +19,9 @@ jobs:
     - uses: actions/checkout@v2
     
     - name: Testing some things
-      run: echo "testing....." 
+      env:
+          MERGED_RAW: ${{ github.event.pull_request.merged }}
+      run: echo "testing..... $MERGED_RAW" 
 
     - name: Connecting to Server
       uses: appleboy/ssh-action@v0.1.2
