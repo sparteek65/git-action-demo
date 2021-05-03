@@ -1,3 +1,9 @@
+<<<<<<< HEAD
 time is 13:31
 
 it is good
+=======
+time is 14:00
+
+time is beautiful
+>>>>>>> test
