@@ -42,7 +42,7 @@ jobs:
     - name: Installing requirements
       run: |
         pwd
-        git pull
+        git pull origin main
         source lvenv/bin/activate
         pip3 install -r requirements.txt
 
