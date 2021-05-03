@@ -20,7 +20,7 @@ jobs:
     
     - name: Testing some things
       env:
-          MERGED_RAW: ${{ github.event.pull_request.merged }}
+        MERGED_RAW: ${{ github.event.pull_request.merged }}
       run: echo "testing..... $MERGED_RAW" 
 
     - name: Connecting to Server
