@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: self-hossted
     strategy:
       max-parallel: 4
       matrix:
@@ -23,16 +23,6 @@ jobs:
         MERGED_RAW: ${{ github.event.pull_request.merged }}
 
       run: echo "testing..... $MERGED_RAW" 
-
-    - name: Connecting to Server
-      uses: appleboy/ssh-action@v0.1.2
-      with:
-        host: ${{secrets.SSH_HOST}}
-        username: ${{ secrets.SSH_USERNAME }}
-        password: ${{ secrets.SSH_PASSWORD }}
-        script: |
-          echo connected successfully
-          
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -49,4 +39,4 @@ jobs:
 
     - name: Deploying to server
       run: |
-        cat temp.txt 
+        ls
