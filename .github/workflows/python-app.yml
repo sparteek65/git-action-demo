@@ -17,12 +17,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    
-    - name: Testing some things
-      env:
-        MERGED_RAW: ${{ github.event.pull_request.merged }}
-
-      run: echo "testing..... $MERGED_RAW" 
 
     - name: Set up Python ${{ matrix.python-version }}
       uses: actions/setup-python@v2
@@ -32,11 +26,10 @@ jobs:
     - name: Installing requirements
       run: |
         pwd
-        ls
         git pull origin main
         source lvenv/bin/activate
         pip3 install -r requirements.txt
 
-    - name: Deploying to server
+    - name: Testing
       run: |
-        ls
+        Pytest
