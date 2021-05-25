@@ -39,8 +39,6 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
-        echo ${{ github.actor }}
-    - name: Set current date as env variable
-      run: echo "NOW::$(date +'%Y-%m-%dT%H:%M:%S')" >> $GITHUB_ENV
-    - name: Echo current date
-      run: echo $NOW
+        echo ${{ github.actor }} $FIRST_NAME
+      env:
+        FIRST_NAME: Mona
