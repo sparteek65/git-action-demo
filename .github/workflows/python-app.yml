@@ -37,8 +37,9 @@ jobs:
     name: Slack Notification
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
     - name: Slack Notification
-      uses: rtCamp/action-slack-notify@v2
-      env:
-        SLACK_WEBHOOK: "https://hooks.slack.com/services/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"
+      run: |
+        curl --location --request POST 'https://hooks.slack.com/services/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' \
+        --header 'Accept: application/json' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{"username": "git actions","icon_emoji": ":robot_face:","text": "This is a line of text in a channel.\nAnd this is another line of text."}'
