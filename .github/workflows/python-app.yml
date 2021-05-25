@@ -45,3 +45,10 @@ jobs:
     - name: Slack Notification
       run: |
         echo ${{ steps.current-time.outputs.time }}
+    - name: fail
+      if: ${{job.status}}=="success"
+      run: |
+        echo ${{job.status}}
+    - name: Success
+      run: |
+        echo ${{job.status}}
