@@ -39,4 +39,5 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
+        echo ${{ job.status }}
         curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
