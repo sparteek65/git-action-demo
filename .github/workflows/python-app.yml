@@ -39,4 +39,4 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
-        echo ${{ github.actor }} ${{ date "+%Y-%m-%d-%H:%M" }}
+        echo ${{ date "+%Y-%m-%d-%H:%M" }}
