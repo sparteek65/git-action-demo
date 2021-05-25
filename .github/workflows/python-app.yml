@@ -39,4 +39,4 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
-        echo ${{ github.event.schedule.user.login }}
+        echo ${{ github.actor }}
