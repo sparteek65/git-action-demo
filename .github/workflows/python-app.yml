@@ -39,4 +39,4 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
-        echo ${GITHUB_REF#refs/heads/}
+        echo ${{ github.repository }}
