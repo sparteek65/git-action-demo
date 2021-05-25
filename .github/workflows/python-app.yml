@@ -39,6 +39,6 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
-        echo ${{ github.actor }} $FIRST_NAME
+        echo ${{ github.actor }} ${{ date "+%Y-%m-%d-%H:%M" }}
       env:
         FIRST_NAME: Mona
