@@ -39,7 +39,4 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
-        curl --location --request POST 'https://hooks.slack.com/services/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' \
-        --header 'Accept: application/json' \
-        --header 'Content-Type: application/json' \
-        --data-raw '{"username": "git actions","icon_emoji": ":robot_face:","text": "This is a line of text in a channel.\nAnd this is another line of text."}'
+        curl --location --request POST 'https://hooks.slack.com/services/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' --header 'Accept: application/json' --header 'Content-Type: application/json' --data-raw '{"username": "git actions","icon_emoji": ":robot_face:","text": "This is a line of text in a channel.\nAnd this is another line of text."}'
