@@ -11,7 +11,7 @@ env:
 
 jobs:
   build:
-    runs-on: self-hossted
+    runs-on: self-hosted
     strategy:
       max-parallel: 4
       matrix:
