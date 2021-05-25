@@ -40,6 +40,6 @@ jobs:
     - name: Slack Notification
       run: |
         echo ${{ github.event.commits[0].message }}
-        echo  ${{GITHUB_SHA::8}}
-        echo ${{GITHUB_REF#refs/heads/}}
+        echo ${{ GITHUB_SHA::8 }}
+        echo ${{ GITHUB_REF#refs/heads/ }}
         curl -X POST -H 'Content-type: application/json' --data '{"text":"Hello, World!"}' https://hooks.slack.com/services/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
