@@ -39,4 +39,4 @@ jobs:
     steps:
     - name: Slack Notification
       run: |
-        echo ${{ date "+%Y-%m-%d-%H:%M" }}
+        echo hii
