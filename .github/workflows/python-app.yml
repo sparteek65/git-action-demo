@@ -36,7 +36,12 @@ jobs:
   slackNotification:
     name: Slack Notification
     runs-on: ubuntu-latest
+    
     steps:
+    - name: time
+      uses: gerred/actions/current-time@master
+      id: current-time
+      
     - name: Slack Notification
       run: |
-        echo hii
+        echo ${{ steps.current-time.outputs.time }}
