@@ -7,7 +7,7 @@ on:
   push:
     branches: [ main ]
 env:
-  SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
+  SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
 
 jobs:
   build:
