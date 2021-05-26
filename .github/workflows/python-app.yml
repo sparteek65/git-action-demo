@@ -16,5 +16,5 @@ jobs:
     
     steps:
       - run: |
-          echo ${{ github.event.number }}
+          curl --location --request POST 'https://hooks.slack.com/services/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' --header 'Accept: application/json' --header 'Content-Type: application/json' --data-raw '{ "blocks": [ { "type": "section", "text": { "type": "mrkdwn", "text": "`@${{ github.actor }}` has started developing `${GITHUB_REF##*/}` of `${{ github.repository }}` to Environment : *${{ github.job }}*" }, "accessory": { "type": "image", "image_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "alt_text": "cute cat" } }, { "type": "divider" }, { "type": "header", "text": { "type": "plain_text", "text": "Deoplyment: ${{ job.status }}", "emoji": true } }, { "type": "divider" }, { "type": "context", "elements": [ { "type": "mrkdwn", "text": "*Pull request code* : ${{ github.event.number }} " } ] } ] }'
           
