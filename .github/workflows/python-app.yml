@@ -48,5 +48,5 @@ jobs:
     
     - name: slack
       run : |
-          ${{ steps.findPr.outputs.pr }}
+          echo ${{ steps.findPr.outputs.pr }}
           
