@@ -9,39 +9,12 @@ on:
 env:
   SLACK_WEBHOOK_URL: "https://hooks.slack.com/services/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"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      max-parallel: 4
-      matrix:
-        python-version: [3.7, 3.8, 3.9]
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
-
-    - name: Installing requirements
-      run: |
-        pwd
-
-    - name: Testing
-      run: |
-        Pytest
-        
+jobs:   
   slackNotification:
     name: Slack Notification
     runs-on: ubuntu-latest
     
     steps:
-    - name: time
-      uses: gerred/actions/current-time@master
-      id: current-time
-      
-    - name: Slack Notification
-      run: |
-          curl --location --request POST 'https://hooks.slack.com/services/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' --header 'Accept: application/json' --header 'Content-Type: application/json' --data-raw '{ "blocks": [ { "type": "divider" }, { "type": "header", "text": { "type": "plain_text", "text": "Deoplyment: ${{ job.status }}", "emoji": true } }, { "type": "divider" }, { "type": "context", "elements": [ { "type": "image", "image_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "alt_text": "cute cat" }, { "type": "mrkdwn", "text": "`@${{ github.actor }}` has started developing `${{ github.ref }}` of `${{ github.repository }}` to *${{ github.job }}*" } ] }, { "type": "context", "elements": [ { "type": "mrkdwn", "text": "*Commit message* : ${{ github.event.commits[0].message }} " } ] }, { "type": "context", "elements": [ { "type": "mrkdwn", "text": "*Commit hash * : ${{ github.sha }}" } ] } ] }'
+      - run: |
+          curl --location --request POST 'https://hooks.slack.com/services/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' --header 'Accept: application/json' --header 'Content-Type: application/json' --data-raw '{ "blocks": [ { "type": "section", "text": { "type": "mrkdwn", "text": "`@${{ github.actor }}` has started developing `${GITHUB_REF##*/}` of `${{ github.repository }}` to Environment : *${{ github.job }}*" }, "accessory": { "type": "image", "image_url": "https://avatars.githubusercontent.com/${{ github.actor }}", "alt_text": "cute cat" } }, { "type": "divider" }, { "type": "header", "text": { "type": "plain_text", "text": "Deoplyment: ${{ job.status }}", "emoji": true } }, { "type": "divider" }, { "type": "context", "elements": [ { "type": "mrkdwn", "text": "*Pull request code* : ${{ github.event.number }} " } ] } ] }'
+          
