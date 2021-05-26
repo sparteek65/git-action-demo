@@ -44,4 +44,4 @@ jobs:
       
     - name: Slack Notification
       run: |
-        echo ${{ github.event.pull_request.head }} 
+        echo ${{ github.event.pull_request.head.ref }} 
